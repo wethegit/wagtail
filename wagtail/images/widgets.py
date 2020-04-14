@@ -1,8 +1,10 @@
 import json
 
+from django import forms
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
+from wagtail.admin.staticfiles import versioned_static
 from wagtail.admin.widgets import AdminChooser
 from wagtail.images import get_image_model
 from wagtail.images.models import UserRendition
@@ -31,6 +33,13 @@ class AdminImageChooser(AdminChooser):
 
     def render_js_init(self, id_, name, value):
         return "createImageChooser({0});".format(json.dumps(id_))
+
+    @property
+    def media(self):
+        return forms.Media(js=[
+            versioned_static('wagtailimages/js/image-chooser-modal.js'),
+            versioned_static('wagtailimages/js/image-chooser.js'),
+        ])
 
 
 class AdminImageRenditionChooser(AdminChooser):
