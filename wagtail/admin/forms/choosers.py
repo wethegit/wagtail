@@ -37,7 +37,7 @@ class ExternalLinkChooserForm(forms.Form):
 
 
 class ExternalLinkChooserWithLinkTextForm(forms.Form):
-    url = URLOrAbsolutePathField(required=True, label=ugettext_lazy("URL"))
+    url = URLOrAbsolutePathField(required=True, label=_("URL"))
     link_text = forms.CharField(required=True)
     new_window = forms.BooleanField(required=False, initial=False,
         help_text=_('Whether this link should be openend in a new window'))
