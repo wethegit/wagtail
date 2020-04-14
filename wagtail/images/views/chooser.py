@@ -21,7 +21,6 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
 
-from wagtail.utils.pagination import paginate
 from wagtail.admin.forms import SearchForm
 from wagtail.admin.modal_workflow import render_modal_workflow
 from wagtail.admin.utils import PermissionPolicyChecker
