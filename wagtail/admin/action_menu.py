@@ -169,7 +169,7 @@ class ArchiveMenuItem(ActionMenuItem):
             and not context['page'].archived
         )
 
-    def get_url(self, request, context)
+    def get_url(self, request, context):
         return reverse('wagtailadmin_pages:archive', args=(context['page'].id,))
 
 
