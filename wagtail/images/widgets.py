@@ -72,3 +72,10 @@ class AdminImageRenditionChooser(AdminChooser):
 
     def render_js_init(self, id_, name, value):
         return "createRenditionChooser({0});".format(json.dumps(id_))
+
+    @property
+    def media(self):
+        return forms.Media(js=[
+            versioned_static('wagtailimages/js/image-chooser-modal.js'),
+            versioned_static('wagtailimages/js/image-chooser.js'),
+        ])
