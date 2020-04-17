@@ -21,7 +21,19 @@ class WagtailImageField(ImageField):
         max_upload_size_text = filesizeformat(self.max_upload_size)
 
         # Help text
-        self.help_text = IMAGE_FIELD_HELP_TEXT
+        if self.max_upload_size is not None:
+            self.help_text = _(
+                "Supported formats: %(supported_formats)s. Maximum filesize: %(max_upload_size)s."
+            ) % {
+                'supported_formats': SUPPORTED_FORMATS_TEXT,
+                'max_upload_size': max_upload_size_text,
+            }
+        else:
+            self.help_text = _(
+                "Supported formats: %(supported_formats)s."
+            ) % {
+                'supported_formats': SUPPORTED_FORMATS_TEXT,
+            }
 
         # Error messages
         self.error_messages['invalid_image'] = _(
