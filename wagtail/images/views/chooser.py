@@ -215,13 +215,8 @@ def chooser(request):
         context.update({
             'images': images,
             'uploadform': uploadform,
-            'searchform': searchform,
-            'is_searching': False,
-            'query_string': q,
             'will_select_format': will_select_format,
             'will_select_rendition': will_select_rendition,
-            'popular_tags': popular_tags_for_model(Image),
-            'collections': collections,
             'uploadid': uuid.uuid4(),
             'post_processing_spec': request.GET.get('pps'),
             'additional_params': get_cropper_params(request),
@@ -398,7 +393,7 @@ def chooser_select(request, image_id):
             # not specifying a format; return the image details now
             return render_modal_workflow(
                 request, None, 'wagtailimages/chooser/image_chosen.js',
-                {'image_json': get_image_json(image)}
+                None, json_data={'result': get_image_result_data(image)}
             )
 
     else:
@@ -500,7 +495,7 @@ def chooser_select_rendition(request, image_id):
 
         preview_image = image.get_rendition(filter_spec + '|max-130x100')
 
-        rendition_json = json.dumps({
+        rendition_data = {
             'id': rendition.id,
             'title': image.title,
             'alt': rendition.alt_text,
@@ -512,10 +507,10 @@ def chooser_select_rendition(request, image_id):
                 'width': preview_image.width,
                 'height': preview_image.height,
             },
-        })
+        }
         return render_modal_workflow(
             request, None, 'wagtailimages/chooser/image_chosen.js',
-            {'image_json': rendition_json}
+            None, json_data={'result': rendition_data},
         )
 
     else:

@@ -4,7 +4,7 @@ function createImageChooser(id) {
     var input = $('#' + id);
     var editLink = chooserElement.find('.edit-link');
 
-    $('.action-choose', chooserElement).click(function() {
+    $('.action-choose', chooserElement).on('click', function() {
         ModalWorkflow({
             url: window.chooserUrls.imageChooser,
             onload: IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
@@ -25,7 +25,7 @@ function createImageChooser(id) {
         });
     });
 
-    $('.action-clear', chooserElement).click(function() {
+    $('.action-clear', chooserElement).on('click', function() {
         input.val('');
         chooserElement.addClass('blank');
     });
@@ -101,7 +101,7 @@ function createRenditionChooser(id) {
         return params.join('');
     }
 
-    $('.action-choose', chooserElement).click(function() {
+    $('.action-choose', chooserElement).on('click', function() {
         var additional_params = get_params(true);
 
         // build URL with the additional params
@@ -121,7 +121,7 @@ function createRenditionChooser(id) {
         return false;
     });
 
-    $('.edit-link', chooserElement).click(function() {
+    $('.edit-link', chooserElement).on('click', function() {
         var additional_params = get_params(),
             image_id = chooserElement.attr('data-original-image-id');
 
@@ -142,7 +142,7 @@ function createRenditionChooser(id) {
         return false;
     });
 
-    $('.action-clear', chooserElement).click(function() {
+    $('.action-clear', chooserElement).on('click', function() {
         input.val('').trigger('change');
     });
 }
