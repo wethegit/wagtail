@@ -111,6 +111,7 @@ function createRenditionChooser(id) {
 
         ModalWorkflow({
             'url': url,
+            'onload': IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
             'responses': {
                 'imageChosen': function(imageData) {
                     input.val(imageData.id).trigger('change', imageData);
@@ -132,6 +133,7 @@ function createRenditionChooser(id) {
 
         ModalWorkflow({
             'url': url,
+            'onload': IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
             'responses': {
                 'imageChosen': function(imageData) {
                     input.val(imageData.id).trigger('change', imageData);
