@@ -40,6 +40,14 @@ class AdminImageChooser(AdminChooser):
             versioned_static('wagtailimages/js/image-chooser-modal.js'),
             versioned_static('wagtailimages/js/image-chooser.js'),
             versioned_static('wagtailimages/js/add-multiple.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.Jcrop.min.js'),
+            versioned_static('wagtailimages/js/vendor/load-image.min.js'),
+            versioned_static('wagtailimages/js/vendor/canvas-to-blob.min.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.iframe-transport.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.fileupload.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.fileupload-process.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.fileupload-image.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.fileupload-validate.js'),
         ])
 
 
@@ -80,4 +88,12 @@ class AdminImageRenditionChooser(AdminChooser):
             versioned_static('wagtailimages/js/image-chooser-modal.js'),
             versioned_static('wagtailimages/js/image-chooser.js'),
             versioned_static('wagtailimages/js/add-multiple.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.Jcrop.min.js'),
+            versioned_static('wagtailimages/js/vendor/load-image.min.js'),
+            versioned_static('wagtailimages/js/vendor/canvas-to-blob.min.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.iframe-transport.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.fileupload.js'),
+            versioned_static('wagtailadmin/js/vendor/jquery.fileupload-process.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.fileupload-image.js'),
+            versioned_static('wagtailimages/js/vendor/jquery.fileupload-validate.js'),
         ])
