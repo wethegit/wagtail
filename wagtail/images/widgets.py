@@ -39,6 +39,7 @@ class AdminImageChooser(AdminChooser):
         return forms.Media(js=[
             versioned_static('wagtailimages/js/image-chooser-modal.js'),
             versioned_static('wagtailimages/js/image-chooser.js'),
+            versioned_static('wagtailimages/js/add-multiple.js'),
         ])
 
 
@@ -78,4 +79,5 @@ class AdminImageRenditionChooser(AdminChooser):
         return forms.Media(js=[
             versioned_static('wagtailimages/js/image-chooser-modal.js'),
             versioned_static('wagtailimages/js/image-chooser.js'),
+            versioned_static('wagtailimages/js/add-multiple.js'),
         ])

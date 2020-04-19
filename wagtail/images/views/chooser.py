@@ -378,16 +378,14 @@ def chooser_select(request, image_id):
             form = ImageInsertionForm(
                 initial={'alt_text': image.default_alt_text})
             return render_modal_workflow(
-                request, 'wagtailimages/chooser/select_format.html',
-                'wagtailimages/chooser/select_format.js',
-                {'image': image, 'form': form}
+                request, 'wagtailimages/chooser/select_format.html', None,
+                {'image': image, 'form': form}, json_data={'step': 'select_format'}
             )
         elif will_select_rendition:
             form = ImageCropperForm(**get_cropper_settings(request, image))
             return render_modal_workflow(
-                request, 'wagtailimages/chooser/select_rendition.html',
-                'wagtailimages/chooser/select_rendition.js',
-                {'image': image, 'form': form}
+                request, 'wagtailimages/chooser/select_rendition.html', None,
+                {'image': image, 'form': form}, json_data={'step': 'select_rendition'}
             )
         else:
             # not specifying a format; return the image details now
@@ -509,8 +507,8 @@ def chooser_select_rendition(request, image_id):
             },
         }
         return render_modal_workflow(
-            request, None, 'wagtailimages/chooser/image_chosen.js',
-            None, json_data={'result': rendition_data},
+            request, None, None,
+            None, json_data={'step': 'image_chosen', 'result': rendition_data},
         )
 
     else:
@@ -519,7 +517,6 @@ def chooser_select_rendition(request, image_id):
         form = ImageCropperForm(**get_cropper_settings(request, image))
 
         return render_modal_workflow(
-            request, 'wagtailimages/chooser/select_rendition.html',
-            'wagtailimages/chooser/select_rendition.js',
-            {'image': image, 'form': form}
+            request, 'wagtailimages/chooser/select_rendition.html', None,
+            {'image': image, 'form': form}, json_data={'step': 'select_rendition'}
         )
