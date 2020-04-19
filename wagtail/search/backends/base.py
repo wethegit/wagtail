@@ -334,7 +334,7 @@ class BaseSearchBackend:
     def delete(self, obj):
         self.get_index_for_model(type(obj)).delete_item(obj)
 
-    def _search(self, query_compiler_class, query, model_or_queryset, **kwargs):
+    def _search(self, query_compiler_class, query, model_or_queryset, return_pks=False, **kwargs):
         # Find model/queryset
         if isinstance(model_or_queryset, QuerySet):
             model = model_or_queryset.model
@@ -361,7 +361,7 @@ class BaseSearchBackend:
 
         return self.results_class(self, search_query, return_pks=return_pks)
 
-    def search(self, query, model_or_queryset, fields=None, operator=None, order_by_relevance=True, partial_match=True):
+    def search(self, query, model_or_queryset, fields=None, operator=None, order_by_relevance=True, partial_match=True, return_pks=False):
         return self._search(
             self.query_compiler_class,
             query,
@@ -370,6 +370,7 @@ class BaseSearchBackend:
             operator=operator,
             order_by_relevance=order_by_relevance,
             partial_match=partial_match,
+            return_pks=return_pks,
         )
 
     def autocomplete(self, query, model_or_queryset, fields=None, operator=None, order_by_relevance=True):
